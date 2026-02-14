@@ -1,4 +1,4 @@
-<div class="mainContainer">
+<!-- <div class="mainContainer">
     <slot />
 </div>
 
@@ -7,4 +7,4 @@
         background-color: #f5f5f5;
         padding: 20px;
     }
-</style>
+</style> -->
