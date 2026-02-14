@@ -1,4 +1,5 @@
 <script>
+	const test = 
 	import "../app.css";
 	let { children } = $props();
 	let test = 3;
