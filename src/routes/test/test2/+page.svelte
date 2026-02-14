@@ -1,14 +1,14 @@
 <script>
     import { invalidateAll } from "$app/navigation";
     import { json } from "@sveltejs/kit";
-    let { data } = $props();
+    let../../test2/$types.js { data } = $props();
     let einkaufsliste = $derived(data.einkaufsliste);
     let selected = $state("b");
     let newItemName = $state("");
 
     async function toggleChecked(id) {
         console.log(id);
-        await fetch("/api/todo", {
+            await fetch("/api/todo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
