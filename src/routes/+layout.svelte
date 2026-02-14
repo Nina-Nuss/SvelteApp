@@ -1,7 +1,6 @@
 <script>
-	const test = 
 	import "../app.css";
-	// Das Layout nimmt die "children" (die aktuelle Seite) entgegen
+
 	let { children } = $props();
 	let test = 3;
 	let test1 = `Hallo aus dem Layout!<strong>${test}</strong>`;
@@ -18,15 +17,9 @@
 	</nav>
 </header>
 
-<svelte:boundary>
-	<p>{await delayed("hello!")}</p>
-
-	{#snippet pending()}
-		<p>loading...</p>
-	{/snippet}
-</svelte:boundary>
-
 <main style="padding: 2rem;">
 	<!-- Hier wird der Inhalt aus +page.svelte eingefügt -->
 	{@render children()}
 </main>
+
+<main style="padding: 2rem;"></main>
