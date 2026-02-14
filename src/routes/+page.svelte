@@ -1,41 +1,45 @@
 <script>
     import "../app.css";
-    // Das Layout nimmt die "children" (die aktuelle Seite) entgegen
-    import { crud } from "./js/crud.svelte.js";
+    import { addItem, deleteItem, toggleChecked } from "./js/crud.svelte.js";
+
     let { data } = $props();
     let einkaufsliste = $derived(data.einkaufsliste);
+    let newItemName = $state("");
     let selected = $state("b");
+
+    const handleAdd = async () => {
+        await addItem(newItemName, "todo");
+        newItemName = "";
+    };
 </script>
+
 <div style="margin-top: 20px;">
     <div class="flex gap-2">
         <input
             type="text"
-            bind:value={crud.newItemName}
+            bind:value={newItemName}
             placeholder="Neues Item..."
         />
-        <button class="btn bg-green-500" onclick={crud.addItem}>Hinzufügen</button>
+        <button class="btn bg-green-500" onclick={handleAdd}>Hinzufügen</button>
     </div>
 </div>
 <h3>Meine Liste (aus SQLite):</h3>
 <ul>
     {#each einkaufsliste as item (item.id)}
         <div class="flex flex-row items-center my-2">
-            <!-- Checkbox als Formular -->
             <input type="hidden" name="id" value={item.id} />
-            <!-- onchange sendet das Formular sofort ab -->
             <input
                 type="checkbox"
                 checked={item.checked}
-                onchange={() => crud.toggleChecked(item.id)}
+                onchange={() => toggleChecked(item.id, "todo")}
                 class="mr-2"
             />
             <li class="mx-2 {item.checked ? 'line-through text-gray-500' : ''}">
                 {item.name}
             </li>
-            <!-- Löschen Button ohne Formular -->
             <button
                 class="btn bg-red-500 mx-2"
-                onclick={() => crud.deleteItem(item.id)}>Del</button
+                onclick={() => deleteItem(item.id, "todo")}>Del</button
             >
         </div>
     {/each}
