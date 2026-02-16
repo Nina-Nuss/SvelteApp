@@ -16,11 +16,7 @@
 </header>
 
 <svelte:boundary>
-<<<<<<< HEAD
 	
-=======
-	<p>{await delayed("hello!")}</p>
->>>>>>> 24db31bbdff05c64251b0cb47011d2eaae7c77b1
 	{#snippet pending()}
 		<p>loading...</p>
 	{/snippet}
